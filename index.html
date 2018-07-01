@@ -7,76 +7,68 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
+        <style>
+        body {padding:25px;}
+        .container { width: 90%; margin: 0 auto; text-align: left; }
+        label { width: 100%; float: left; margin: 10px 0px;}
+        fieldset {border:none; padding:0;}
+        </style>
+
     </head>
     <body>
 
-        <!--
-        Write a function that takes 2 colours as arguments and returns the average colour.
-        The parameters will be two 6-digit hexadecimal strings. This does not need to be validated. 
-        The return value should be a 6-digit hexadecimal string.
-        The hexadecimal strings represent colours in RGB, much like in CSS.
-        The average colour is to be determined by taking the arithmetic mean for each component: red, green and blue.
-        -->
-    
-        <!-- basic form scaffold -->
-        <form id="mainForm">
-            <fieldset>
-                <label for="firstHexCode">
-                    #<input type="text" id="firstHexCode" title="Enter hexidecimal code" placeholder="Enter hexidecimal code" required maxLength="6" minLength="6">
-                </label>
-                        
-                <label for="secondHexCode">
-                    #<input type="text" id="secondHexCode" title="Enter hexidecimal code" placeholder="Enter hexidecimal code" required maxLength="6" minLength="6">
-                </label>
 
-                <button>Get Hex Code</button>
-                        
-            </fieldset>
-        </form>
-            
-        <p>Average hex code:</p>
-        <span id="result"></span>
+        <div class="container">
 
+            <form id="mainForm">
+                <fieldset>
+                    <label for="firstHexCode">Enter first hex code without the hash:
+                        #<input type="text" id="firstHexCode" title="Enter hexidecimal code" placeholder="Enter hexidecimal code" required maxLength="6" minLength="6">
+                    </label>
+                            
+                    <label for="secondHexCode">Enter second hex code without the hash:
+                        #<input type="text" id="secondHexCode" title="Enter hexidecimal code" placeholder="Enter hexidecimal code" required maxLength="6" minLength="6">
+                    </label>
+
+                    <button>Get Hex Code</button>
+                            
+                </fieldset>
+            </form>
+                
+            <p>Average hex code:</p>
+            <span id="result"></span>
+
+        </div>
 
         <script>
-
             document.getElementById("mainForm").addEventListener("submit", function(e){
-                //stop form from submitting
-                e.preventDefault();     
 
-                //grab form values
+                e.preventDefault();     
                 var firstHexCode = document.getElementById('firstHexCode').value;
                 var secondHexCode = document.getElementById('secondHexCode').value;
-
                 var newRGBCode = getMeanHexCode(firstHexCode, secondHexCode);
-
-                //display
                 document.getElementById("result").innerHTML = newRGBCode;
                 
             });
 
             function getMeanHexCode(firstHexCode, secondHexCode) {
 
-
-                //convert to rgb so we can do calculation
                 var rgb1 = hexToRGB(firstHexCode);
                 var rgb2 = hexToRGB(secondHexCode);
 
-                //convert to array to do math on each object
                 var res = rgb1.split(",");
                 var res2 = rgb2.split(",");
 
                 for(var i=0; i<res.length; i++) { res[i] = +res[i]; } 
                 for(var i=0; i<res2.length; i++) { res2[i] = +res2[i]; } 
 
-                //logic
                 var newr = Math.round( (res[0] + res2[0] ) / 2);
                 var newg = Math.round( (res[1] + res2[1] ) / 2);
                 var newb = Math.round( (res[2] + res2[2] ) / 2);
 
                 var averageHexCode = newr + "," + newg + "," + newb;
 
-                //convert back to hex
                 var newHexCode = "#" + ((1 << 24) + (newr << 16) + (newg << 8) + newb).toString(16).slice(1);
 
                 return newHexCode;
@@ -89,13 +81,10 @@
                 var r = (converInt >> 16) & 255;
                 var g = (converInt >> 8) & 255;
                 var b = converInt & 255;
-
                 var rgbCode = r + "," + g + "," + b;
-
                 return rgbCode;
 
             }
-
         </script>
             
     </body>
