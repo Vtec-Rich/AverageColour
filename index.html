@@ -1,0 +1,41 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+
+        <!--
+        Write a function that takes 2 colours as arguments and returns the average colour.
+        The parameters will be two 6-digit hexadecimal strings. This does not need to be validated. 
+        The return value should be a 6-digit hexadecimal string.
+        The hexadecimal strings represent colours in RGB, much like in CSS.
+        The average colour is to be determined by taking the arithmetic mean for each component: red, green and blue.
+        -->
+    
+        <!-- basic form scaffold -->
+        <form id="mainForm">
+            <fieldset>
+                <label for="firstHexCode">
+                    #<input type="text" id="firstHexCode" title="Enter hexidecimal code" placeholder="Enter hexidecimal code" required maxLength="6" minLength="6">
+                </label>
+                        
+                <label for="secondHexCode">
+                    #<input type="text" id="secondHexCode" title="Enter hexidecimal code" placeholder="Enter hexidecimal code" required maxLength="6" minLength="6">
+                </label>
+
+                <button>Get Hex Code</button>
+                        
+            </fieldset>
+        </form>
+            
+        <p>Average hex code:</p>
+        <span id="result"></span>
+            
+    </body>
+</html>
