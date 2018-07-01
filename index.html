@@ -36,6 +36,21 @@
             
         <p>Average hex code:</p>
         <span id="result"></span>
+
+
+        <script>
+
+            document.getElementById("mainForm").addEventListener("submit", function(e){
+                //stop form from submitting
+                e.preventDefault();     
+
+                //grab form values
+                var firstHexCode = document.getElementById('firstHexCode').value;
+                var secondHexCode = document.getElementById('secondHexCode').value;
+
+            });
+
+        </script>
             
     </body>
 </html>
