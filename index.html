@@ -48,7 +48,35 @@
                 var firstHexCode = document.getElementById('firstHexCode').value;
                 var secondHexCode = document.getElementById('secondHexCode').value;
 
+                var newRGBCode = getMeanHexCode(firstHexCode, secondHexCode);
+
             });
+
+            function getMeanHexCode(firstHexCode, secondHexCode) {
+
+
+                //convert to rgb so we can do calculation
+                var rgb1 = hexToRGB(firstHexCode);
+                var rgb2 = hexToRGB(secondHexCode);
+
+                //check rgb codes
+                console.log(rgb1);
+                console.log(rgb2);
+
+            }
+
+            function hexToRGB(hexCode) {
+
+                var converInt = parseInt(hexCode, 16);
+                var r = (converInt >> 16) & 255;
+                var g = (converInt >> 8) & 255;
+                var b = converInt & 255;
+
+                var rgbCode = r + "," + g + "," + b;
+
+                return rgbCode;
+
+            }
 
         </script>
             
