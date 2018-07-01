@@ -50,6 +50,9 @@
 
                 var newRGBCode = getMeanHexCode(firstHexCode, secondHexCode);
 
+                //display
+                document.getElementById("result").innerHTML = newRGBCode;
+                
             });
 
             function getMeanHexCode(firstHexCode, secondHexCode) {
@@ -59,9 +62,24 @@
                 var rgb1 = hexToRGB(firstHexCode);
                 var rgb2 = hexToRGB(secondHexCode);
 
-                //check rgb codes
-                console.log(rgb1);
-                console.log(rgb2);
+                //convert to array to do math on each object
+                var res = rgb1.split(",");
+                var res2 = rgb2.split(",");
+
+                for(var i=0; i<res.length; i++) { res[i] = +res[i]; } 
+                for(var i=0; i<res2.length; i++) { res2[i] = +res2[i]; } 
+
+                //logic
+                var newr = Math.round( (res[0] + res2[0] ) / 2);
+                var newg = Math.round( (res[1] + res2[1] ) / 2);
+                var newb = Math.round( (res[2] + res2[2] ) / 2);
+
+                var averageHexCode = newr + "," + newg + "," + newb;
+
+                //convert back to hex
+                var newHexCode = "#" + ((1 << 24) + (newr << 16) + (newg << 8) + newb).toString(16).slice(1);
+
+                return newHexCode;
 
             }
 
